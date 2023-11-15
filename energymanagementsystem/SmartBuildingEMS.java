@@ -1,12 +1,12 @@
-package energymanagementsystem;
+package com.mycompany.energymanagementsystem;
 
 import java.util.Scanner;
 
-import energymanagementsystem.*;
-
+import com.mycompany.energymanagementsystem.*;
 
 // Main class to demonstrate the project
 public class SmartBuildingEMS {
+
     // print
     public static void print(String s) {
         System.out.print(s);
@@ -22,7 +22,6 @@ public class SmartBuildingEMS {
         Scanner input1 = new Scanner(System.in);
 
         // sensor object
-        Sensor sensor = new Sensor();
         // control objext
         Control control = new Control();
 
@@ -34,10 +33,11 @@ public class SmartBuildingEMS {
         while (true) {
             System.out.print("Temperature: ");
             tempTemp = input1.nextDouble();
-            if (tempTemp < 15.0 || tempTemp > 35.0)
+            if (tempTemp < 15.0 || tempTemp > 35.0) {
                 System.out.println("Please enter a valid temperature between 15.0 - 35.0");
-            else
+            } else {
                 break;
+            }
         }
 
         // input section day
@@ -45,11 +45,11 @@ public class SmartBuildingEMS {
         while (true) {
             System.out.print("Day (Enter YES / NO): ");
             tempDay = input1.next().toUpperCase();
-            System.out.println(tempDay.length());
             if (tempDay.equals("YES") || tempDay.equals("NO")) {
                 break;
-            } else
+            } else {
                 System.out.println("Please enter a valid Input as day (YES / NO)");
+            }
         }
 
         // input section person
@@ -59,9 +59,9 @@ public class SmartBuildingEMS {
             tempPer = input1.nextInt();
             if (tempPer < 0) {
                 System.out.println("Please enter a valid number. Person can not be negative.");
-                continue;
-            } else
+            } else {
                 break;
+            }
         }
 
         // updating status
@@ -76,6 +76,9 @@ public class SmartBuildingEMS {
         if (tempDay.equals("YES")) {
             Status.Day = true;
             Status.Light = false;
+        } else {
+            Status.Day = false;
+            Status.Light = true;
         }
 
         Status.PersonPresent = tempPer;
@@ -135,7 +138,7 @@ public class SmartBuildingEMS {
             println("8. Manage Renewable Energy Source (Solar)");
 
             println("");
-            print("Operation Number(1-7): ");
+            print("Operation Number(1-8): ");
             int operation = input1.nextInt();
 
             if (operation == 1) {
@@ -144,27 +147,30 @@ public class SmartBuildingEMS {
                 while (true) {
                     print("Do you want to turn ON or OFF the light: ");
                     lightInput = input1.next().toUpperCase();
-                    if (lightInput.equals("ON") || lightInput.equals("OFF"))
+                    if (lightInput.equals("ON") || lightInput.equals("OFF")) {
                         break;
-                    else
+                    } else {
                         println("Please Select ON or OFF!");
+                    }
                 }
                 // checking if person present is 0 or not. we cant turn on light if person
                 // present is 0
-                if (Status.PersonPresent == 0)
+                if (Status.PersonPresent == 0) {
                     println("Can not turn the light as there is no person in the room.\nPlease Update the person field to turn on the light.");
-                else
+                } else {
                     control.light(lightInput);
+                }
             } else if (operation == 2) {
                 // shading
                 String ShadeInput;
                 while (true) {
                     print("Do you want to turn ON or OFF the Shading: ");
                     ShadeInput = input1.next().toUpperCase();
-                    if (ShadeInput.equals("ON") || ShadeInput.equals("OFF"))
+                    if (ShadeInput.equals("ON") || ShadeInput.equals("OFF")) {
                         break;
-                    else
+                    } else {
                         println("Please Select ON or OFF!");
+                    }
                 }
                 control.shading(ShadeInput);
             } else if (operation == 3) {
@@ -173,10 +179,11 @@ public class SmartBuildingEMS {
                 while (true) {
                     print("New AC Temperature: ");
                     ACInput = input1.nextDouble();
-                    if (ACInput > 35 || ACInput < 15)
+                    if (ACInput > 35 || ACInput < 15) {
                         println("Please Select valid temperature between 15 to 35");
-                    else
+                    } else {
                         break;
+                    }
                 }
                 control.ac(ACInput);
             } else if (operation == 4) {
@@ -185,10 +192,11 @@ public class SmartBuildingEMS {
                 while (true) {
                     print("New Heater Temperature: ");
                     HeaterInput = input1.nextDouble();
-                    if (HeaterInput > 35 || HeaterInput < 15)
+                    if (HeaterInput > 35 || HeaterInput < 15) {
                         println("Please Select valid temperature between 15 to 35");
-                    else
+                    } else {
                         break;
+                    }
                 }
                 control.heater(HeaterInput);
             } else if (operation == 5) {
@@ -197,10 +205,11 @@ public class SmartBuildingEMS {
                 while (true) {
                     print("New Temperature: ");
                     TempInput = input1.nextDouble();
-                    if (TempInput > 35 || TempInput < 15)
+                    if (TempInput > 35 || TempInput < 15) {
                         println("Please Select valid temperature between 15 to 35");
-                    else
+                    } else {
                         break;
+                    }
                 }
                 control.temperature(TempInput);
             } else if (operation == 6) {
@@ -209,10 +218,11 @@ public class SmartBuildingEMS {
                 while (true) {
                     print("Day(YES / NO): ");
                     DayInput = input1.next().toUpperCase();
-                    if (DayInput.equals("YES") || DayInput.equals("NO"))
+                    if (DayInput.equals("YES") || DayInput.equals("NO")) {
                         break;
-                    else
+                    } else {
                         println("Please enter YES or NO.");
+                    }
                 }
                 control.day(DayInput);
             } else if (operation == 7) {
@@ -221,10 +231,11 @@ public class SmartBuildingEMS {
                 while (true) {
                     print("New Person Number: ");
                     PersonInput = input1.nextInt();
-                    if (PersonInput < 0)
+                    if (PersonInput < 0) {
                         println("Please Select person number(greater or equal to 0)");
-                    else
+                    } else {
                         break;
+                    }
                 }
                 control.person(PersonInput);
             } else if (operation == 8) {
@@ -236,16 +247,16 @@ public class SmartBuildingEMS {
                         print("* Using solar power to powerup the light.");
                     }
                     println("* Battery Status(Charging): 93% charged");
-                }
-                else {
+                } else {
                     // night
                     print("* Battery in stand by mode\n");
                     if (Status.Light == true) {
                         println("* Using solar power to powerup the light.");
                     }
                 }
-            } else
+            } else {
                 println("Operation out of range. Please select among 1 to 7.");
+            }
         }
     }
 }

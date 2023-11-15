@@ -1,4 +1,4 @@
-package energymanagementsystem;
+package com.mycompany.energymanagementsystem;
 
 public class Control {
 

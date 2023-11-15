@@ -1,3 +1,4 @@
+package com.mycompany.energymanagementsystem;
 public class SecuritySystem {
 
     //  dataStorage(): store user data and current status in cloud to access from any where

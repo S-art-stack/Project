@@ -1,4 +1,4 @@
-package energymanagementsystem;
+package com.mycompany.energymanagementsystem;
 // store currect status
 public class Status {
     public static boolean SolarPanel, BatteryStatus, Day = false, VoltageInRange,  Light, Shading, ElectricalLine;
