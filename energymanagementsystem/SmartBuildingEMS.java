@@ -2,6 +2,7 @@ package com.mycompany.energymanagementsystem;
 
 import java.util.HashMap;
 import java.util.Map;
+import javax.lang.model.SourceVersion;
 
 // Sensor class to represent different sensors in the building
 class Sensor {
