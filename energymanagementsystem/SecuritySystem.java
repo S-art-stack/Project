@@ -1,17 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package com.mycompany.energymanagementsystem;
+public class SecuritySystem {
 
-/**
- *
- * @author LENOVO
- */
-class SecuritySystem {
-
-    void activateSecurity() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    //  dataStorage(): store user data and current status in cloud to access from any where
+    //  tranfer data with block chain to keep user privacy.
     
 }
