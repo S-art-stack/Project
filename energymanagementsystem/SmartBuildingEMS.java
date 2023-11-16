@@ -2,7 +2,6 @@ package com.mycompany.energymanagementsystem;
 
 import java.util.Scanner;
 
-import com.mycompany.energymanagementsystem.*;
 
 // Main class to demonstrate the project
 public class SmartBuildingEMS {
@@ -76,10 +75,14 @@ public class SmartBuildingEMS {
         if (tempDay.equals("YES")) {
             Status.Day = true;
             Status.Light = false;
-        } else {
+            Status.Shading = false;
+        }
+        else  {
             Status.Day = false;
             Status.Light = true;
+            Status.Shading = true;
         }
+       
 
         Status.PersonPresent = tempPer;
 
@@ -96,10 +99,10 @@ public class SmartBuildingEMS {
 
             // shading
             print("2. Shading ");
-            if (Status.Day == true) {
-                println("ON");
-            } else {
+            if (Status.Shading == false) {
                 println("OFF");
+            } else {
+                println("ON");
             }
 
             // ac
