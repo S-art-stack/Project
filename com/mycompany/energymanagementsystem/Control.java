@@ -41,12 +41,14 @@ public class Control {
     public void ac(double t) {
         Status.AC = t;
         Status.Heater = 0.0;
+        Status.Temperature = t;
     }
 
-    // turn ac on off
+    // turn heater on off
     public void heater(double t) {
         Status.Heater = t;
         Status.AC = 0.0;
+        Status.Temperature = t;
     }
 
     // update temperature
