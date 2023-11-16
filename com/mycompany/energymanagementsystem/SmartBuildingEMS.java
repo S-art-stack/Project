@@ -1,7 +1,7 @@
 package com.mycompany.energymanagementsystem;
 
 import java.util.Scanner;
-
+import java.util.InputMismatchException;
 
 // Main class to demonstrate the project
 public class SmartBuildingEMS {
@@ -30,36 +30,51 @@ public class SmartBuildingEMS {
         // input section temperature
         double tempTemp;
         while (true) {
-            System.out.print("Temperature: ");
-            tempTemp = input1.nextDouble();
-            if (tempTemp < 15.0 || tempTemp > 35.0) {
-                System.out.println("Please enter a valid temperature between 15.0 - 35.0");
-            } else {
-                break;
+            try {
+                System.out.print("Temperature: ");
+                tempTemp = input1.nextDouble();
+                if (tempTemp < 15.0 || tempTemp > 35.0) {
+                    System.out.println("Please enter a valid temperature between 15.0 - 35.0");
+                } else {
+                    break;
+                }
+            } catch (InputMismatchException e) {
+                println("Invalid Input format!");
+                input1.next();
             }
         }
 
         // input section day
         String tempDay;
         while (true) {
-            System.out.print("Day (Enter YES / NO): ");
-            tempDay = input1.next().toUpperCase();
-            if (tempDay.equals("YES") || tempDay.equals("NO")) {
-                break;
-            } else {
-                System.out.println("Please enter a valid Input as day (YES / NO)");
+            try {
+                System.out.print("Day (Enter YES / NO): ");
+                tempDay = input1.next().toUpperCase();
+                if (tempDay.equals("YES") || tempDay.equals("NO")) {
+                    break;
+                } else {
+                    System.out.println("Please enter a valid Input as day (YES / NO)");
+                }
+            } catch (InputMismatchException e) {
+                println("Invalid Input format!");
+                input1.next();
             }
         }
 
         // input section person
         int tempPer;
         while (true) {
-            System.out.print("Number of person in a room : ");
-            tempPer = input1.nextInt();
-            if (tempPer < 0) {
-                System.out.println("Please enter a valid number. Person can not be negative.");
-            } else {
-                break;
+            try {
+                System.out.print("Number of person in a room : ");
+                tempPer = input1.nextInt();
+                if (tempPer < 0) {
+                    System.out.println("Please enter a valid number. Person can not be negative.");
+                } else {
+                    break;
+                }
+            } catch (InputMismatchException e) {
+                println("Invalid Input format!");
+                input1.next();
             }
         }
 
@@ -148,12 +163,17 @@ public class SmartBuildingEMS {
                 // light
                 String lightInput;
                 while (true) {
-                    print("Do you want to turn ON or OFF the light: ");
-                    lightInput = input1.next().toUpperCase();
-                    if (lightInput.equals("ON") || lightInput.equals("OFF")) {
-                        break;
-                    } else {
-                        println("Please Select ON or OFF!");
+                    try {
+                        print("Do you want to turn ON or OFF the light: ");
+                        lightInput = input1.next().toUpperCase();
+                        if (lightInput.equals("ON") || lightInput.equals("OFF")) {
+                            break;
+                        } else {
+                            println("Please Select ON or OFF!");
+                        }
+                    } catch (InputMismatchException e) {
+                        println("Invalid Input format!");
+                        input1.next();
                     }
                 }
                 // checking if person present is 0 or not. we cant turn on light if person
@@ -167,12 +187,17 @@ public class SmartBuildingEMS {
                 // shading
                 String ShadeInput;
                 while (true) {
-                    print("Do you want to turn ON or OFF the Shading: ");
-                    ShadeInput = input1.next().toUpperCase();
-                    if (ShadeInput.equals("ON") || ShadeInput.equals("OFF")) {
-                        break;
-                    } else {
-                        println("Please Select ON or OFF!");
+                    try {
+                        print("Do you want to turn ON or OFF the Shading: ");
+                        ShadeInput = input1.next().toUpperCase();
+                        if (ShadeInput.equals("ON") || ShadeInput.equals("OFF")) {
+                            break;
+                        } else {
+                            println("Please Select ON or OFF!");
+                        }
+                    } catch (InputMismatchException e) {
+                        println("Invalid Input format!");
+                        input1.next();
                     }
                 }
                 control.shading(ShadeInput);
@@ -180,12 +205,17 @@ public class SmartBuildingEMS {
                 // ac
                 double ACInput;
                 while (true) {
-                    print("New AC Temperature: ");
-                    ACInput = input1.nextDouble();
-                    if (ACInput > 35 || ACInput < 15) {
-                        println("Please Select valid temperature between 15 to 35");
-                    } else {
-                        break;
+                    try {
+                        print("New AC Temperature: ");
+                        ACInput = input1.nextDouble();
+                        if (ACInput > 35 || ACInput < 15) {
+                            println("Please Select valid temperature between 15 to 35");
+                        } else {
+                            break;
+                        }
+                    }  catch (InputMismatchException e) {
+                        println("Invalid Input format!");
+                    input1.next();
                     }
                 }
                 control.ac(ACInput);
@@ -193,12 +223,17 @@ public class SmartBuildingEMS {
                 // heater
                 double HeaterInput;
                 while (true) {
-                    print("New Heater Temperature: ");
-                    HeaterInput = input1.nextDouble();
-                    if (HeaterInput > 35 || HeaterInput < 15) {
-                        println("Please Select valid temperature between 15 to 35");
-                    } else {
-                        break;
+                    try {
+                        print("New Heater Temperature: ");
+                        HeaterInput = input1.nextDouble();
+                        if (HeaterInput > 35 || HeaterInput < 15) {
+                            println("Please Select valid temperature between 15 to 35");
+                        } else {
+                            break;
+                        }
+                    } catch (InputMismatchException e) {
+                        println("Invalid Input format!");
+                        input1.next();
                     }
                 }
                 control.heater(HeaterInput);
@@ -206,12 +241,17 @@ public class SmartBuildingEMS {
                 // temp
                 double TempInput;
                 while (true) {
-                    print("New Temperature: ");
-                    TempInput = input1.nextDouble();
-                    if (TempInput > 35 || TempInput < 15) {
-                        println("Please Select valid temperature between 15 to 35");
-                    } else {
-                        break;
+                    try {
+                        print("New Temperature: ");
+                        TempInput = input1.nextDouble();
+                        if (TempInput > 35 || TempInput < 15) {
+                            println("Please Select valid temperature between 15 to 35");
+                        } else {
+                            break;
+                        }
+                    } catch (InputMismatchException e) {
+                        println("Invalid Input format!");
+                        input1.next();
                     }
                 }
                 control.temperature(TempInput);
@@ -219,12 +259,17 @@ public class SmartBuildingEMS {
                 // day
                 String DayInput;
                 while (true) {
-                    print("Day(YES / NO): ");
-                    DayInput = input1.next().toUpperCase();
-                    if (DayInput.equals("YES") || DayInput.equals("NO")) {
-                        break;
-                    } else {
-                        println("Please enter YES or NO.");
+                    try {
+                        print("Day(YES / NO): ");
+                        DayInput = input1.next().toUpperCase();
+                        if (DayInput.equals("YES") || DayInput.equals("NO")) {
+                            break;
+                        } else {
+                            println("Please enter YES or NO.");
+                        }
+                    } catch (InputMismatchException e) {
+                        println("Invalid Input format!");
+                        input1.next();
                     }
                 }
                 control.day(DayInput);
@@ -232,12 +277,17 @@ public class SmartBuildingEMS {
                 // person
                 int PersonInput;
                 while (true) {
-                    print("New Person Number: ");
-                    PersonInput = input1.nextInt();
-                    if (PersonInput < 0) {
-                        println("Please Select person number(greater or equal to 0)");
-                    } else {
-                        break;
+                    try {
+                        print("New Person Number: ");
+                        PersonInput = input1.nextInt();
+                        if (PersonInput < 0) {
+                            println("Please Select person number(greater or equal to 0)");
+                        } else {
+                            break;
+                        }
+                    } catch (InputMismatchException e) {
+                        println("Invalid Input format!");
+                        input1.next();
                     }
                 }
                 control.person(PersonInput);
