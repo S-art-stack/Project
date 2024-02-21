@@ -255,9 +255,15 @@ int main()
                         std::cout << "Can not change room temperature. No people in the room.\n";
                     }
                     else if (opt <= 25)
+                    {
                         element.set("AC", {true, opt});
+                        element.set("Heater", {false, -1});
+                    }
                     else
+                    {
                         element.set("Heater", {true, opt});
+                        element.set("AC", {false, -1});
+                    }
                     break;
                 }
                 else
@@ -327,7 +333,25 @@ void showstatus(Element element)
     for (auto pr : mp)
     {
         std::cout << "\t* " << pr.first << ": ";
-        if (pr.second.first)
+        if ((pr.first == "AC" || pr.first == "Heater") && pr.second.first)
+        {
+            if (pr.second.first)
+            {
+                std::cout << "ON [" << pr.second.second << "`C]\n";
+            }
+            else
+                std::cout << "OFF\n";
+        }
+        else if (pr.first == "People")
+        {
+            if (pr.second.first)
+            {
+                std::cout << pr.second.second << "\n";
+            }
+            else
+                std::cout << "Null\n";
+        }
+        else if (pr.second.first)
         {
             std::cout << "ON\n";
         }
